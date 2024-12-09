@@ -1,10 +1,9 @@
 package ru.prusakova.mdm.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import ru.prusakova.mdm.dto.MdmMessagePayload;
 import ru.prusakova.mdm.dto.enums.EventTypeEnum;
 
@@ -21,10 +20,14 @@ public class MdmMessage extends AuditableEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     private UUID externalId;
+
     private String guid;
+
+    @Enumerated(value = EnumType.STRING)
     private EventTypeEnum type;
+
+    @JdbcTypeCode(SqlTypes.JSON)
     private MdmMessagePayload payload;
-
-
 }

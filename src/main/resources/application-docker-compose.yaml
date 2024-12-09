@@ -1,0 +1,3 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-mdm:5432/mentoring

@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import ru.prusakova.mdm.dto.MdmMessagePayload;
+import ru.prusakova.mdm.dto.enums.EventTypeEnum;
 
 import java.util.UUID;
 
@@ -21,8 +23,8 @@ public class MdmMessage extends AuditableEntity {
     private UUID id;
     private UUID externalId;
     private String guid;
-    private String type;
-    private String payload;
+    private EventTypeEnum type;
+    private MdmMessagePayload payload;
 
 
 }

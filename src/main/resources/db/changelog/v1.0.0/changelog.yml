@@ -9,5 +9,5 @@ databaseChangeLog:
       file: 01.create_mdm_message.yml
       relativeToChangelogFile: true
   - include:
-      file: 01.create_mdm_message_outbox.yml
+      file: 02.create_mdm_message_outbox.yml
       relativeToChangelogFile: true

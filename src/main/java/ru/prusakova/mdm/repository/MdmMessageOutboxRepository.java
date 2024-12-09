@@ -5,5 +5,5 @@ import ru.prusakova.mdm.model.MdmMessageOutbox;
 
 import java.util.UUID;
 
-public interface MdmMessageOutboxRepository extends JpaRepository<MdmMessageOutbox, UUID> {
+public interface MdmMessageOutboxRepository extends JpaRepository<MdmMessageOutbox, Long> {
 }

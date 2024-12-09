@@ -5,8 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
+import ru.prusakova.mdm.dto.MdmMessageResponse;
+import ru.prusakova.mdm.dto.enums.DeliveryStatusEnum;
+import ru.prusakova.mdm.dto.enums.TargetEnum;
 
-import java.math.BigInteger;
 import java.util.UUID;
 
 @Setter
@@ -19,11 +21,11 @@ public class MdmMessageOutbox extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
+    private Long id;
     private UUID mdmMessageId;
-    private String status;
-    private String target;
-    private String responseData;
+    private DeliveryStatusEnum status;
+    private TargetEnum target;
+    private MdmMessageResponse responseData;
 
 
 }

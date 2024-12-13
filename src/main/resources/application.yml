@@ -18,3 +18,26 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+  kafka:
+    bootstrap-servers: localhost:29092
+    producer:
+      acks: all
+    consumer:
+      group-id: prusakova-mdm-group
+  cloud:
+    openfeign:
+      client:
+        config:
+          mdm-client:
+            connect-timeout: 5000
+            read-timeout: 5000
+
+mdm:
+  kafka:
+    mdm-change-phone:
+      enabled: true
+      topic-in: MDM.Change.Phone.IN.V1
+  integration:
+    change-phone:
+      host-one: http://localhost:8082
+      host-two: http://localhost:8082

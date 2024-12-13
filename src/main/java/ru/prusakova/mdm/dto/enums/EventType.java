@@ -1,5 +1,5 @@
 package ru.prusakova.mdm.dto.enums;
 
-public enum EventTypeEnum {
+public enum EventType {
     USER_PHONE_CHANGE
 }

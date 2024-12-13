@@ -5,7 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import ru.prusakova.mdm.dto.MdmMessagePayload;
-import ru.prusakova.mdm.dto.enums.EventTypeEnum;
+import ru.prusakova.mdm.dto.enums.EventType;
 
 import java.util.UUID;
 
@@ -26,7 +26,7 @@ public class MdmMessage extends AuditableEntity {
     private String guid;
 
     @Enumerated(value = EnumType.STRING)
-    private EventTypeEnum type;
+    private EventType type;
 
     @JdbcTypeCode(SqlTypes.JSON)
     private MdmMessagePayload payload;

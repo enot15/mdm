@@ -19,7 +19,7 @@ spring:
     hibernate:
       ddl-auto: validate
   kafka:
-    bootstrap-servers: localhost:29092
+    bootstrap-servers: 195.93.252.91:29092
     producer:
       acks: all
     consumer:

@@ -11,7 +11,7 @@ import ru.prusakova.mdm.dto.MdmMessageServiceTwoPayload;
 import ru.prusakova.mdm.dto.common.CommonResponse;
 
 @Component
-@FeignClient(url = "${mdm.integration.change-phone.host-two}/user-data-service-two/user/update/phone", name = "mdm-client", contextId = "mdm-client-two")
+@FeignClient(url = "${mdm.integration.change-phone.host-two}/user-data-service-two/user/update/phone", name = "mdm-client-two")
 public interface ChangePhoneTwoFeignClient {
 
     @Value("${mdm.retry.max-attempts}")

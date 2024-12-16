@@ -19,7 +19,7 @@ spring:
     hibernate:
       ddl-auto: validate
   kafka:
-    bootstrap-servers: 195.93.252.91:29092
+    bootstrap-servers: localhost:29092
     producer:
       acks: all
     consumer:
@@ -28,7 +28,10 @@ spring:
     openfeign:
       client:
         config:
-          mdm-client:
+          mdm-client-one:
+            connect-timeout: 5000
+            read-timeout: 5000
+          mdm-client-two:
             connect-timeout: 5000
             read-timeout: 5000
 

@@ -1,12 +1,13 @@
 package ru.prusakova.mdm.listener;
 
+import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import ru.prusakova.mdm.dto.KafkaMdmChangePhoneInResponse;
+import ru.prusakova.mdm.dto.MdmChangePhoneEvent;
 import ru.prusakova.mdm.util.JsonUtil;
 
 @Slf4j
@@ -16,12 +17,15 @@ import ru.prusakova.mdm.util.JsonUtil;
 public class MdmChangePhoneConsumer {
 
     private final JsonUtil jsonUtil;
+    private final Validator validator;
 
     @KafkaListener(topics = "${mdm.kafka.mdm-change-phone.topic-in}")
     public void consume(ConsumerRecord<String, String> consumerRecord) {
-        log.info("Ответ из кафка получен: {}", consumerRecord.toString());
+        log.info("Событие из кафки получен: {}", consumerRecord.toString());
         try {
-            KafkaMdmChangePhoneInResponse response = jsonUtil.fromJson(consumerRecord.value(), KafkaMdmChangePhoneInResponse.class);
+            MdmChangePhoneEvent response = jsonUtil.fromJson(consumerRecord.value(), MdmChangePhoneEvent.class);
+            validator.validate(response)
+                    .forEach(it -> log.warn(it.getMessage()));
         } catch (Exception e) {
             log.error("Ошибка преобразования JSON: {}", consumerRecord.value(), e);
         }

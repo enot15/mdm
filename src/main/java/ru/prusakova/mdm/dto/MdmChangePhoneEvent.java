@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class KafkaMdmChangePhoneInResponse {
+public class MdmChangePhoneEvent {
 
     @NotNull(message = "Идентификатор не может отсутствовать или быть null")
     private String id;

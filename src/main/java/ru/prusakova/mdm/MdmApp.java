@@ -8,8 +8,8 @@ import org.springframework.retry.annotation.EnableRetry;
 @EnableRetry
 @EnableFeignClients
 @SpringBootApplication
-public class App {
+public class MdmApp {
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(MdmApp.class, args);
     }
 }

@@ -10,6 +10,7 @@ import ru.prusakova.mdm.dto.MdmMessageResponse;
 import ru.prusakova.mdm.dto.MetaRequest;
 import ru.prusakova.mdm.dto.common.CommonRequest;
 import ru.prusakova.mdm.dto.common.CommonResponse;
+import ru.prusakova.mdm.property.MdmProperty;
 
 @Slf4j
 @Service
@@ -19,13 +20,14 @@ public class ChangePhoneOneFeignClientService {
     public static final MdmMessageResponse UPDATE_PHONE_FALLBACK_RESPONSE = new MdmMessageResponse();
 
     private final ChangePhoneOneFeignClient changePhoneOneFeignClient;
+    private final MdmProperty mdmProperty;
 
     public MdmMessageResponse updatePhone(MdmMessagePayload request) {
         try {
             CommonResponse<MdmMessageResponse> commonResponse = changePhoneOneFeignClient.postChangePhoneServiceOne(CommonRequest.<MdmMessagePayload>builder()
                     .meta(MetaRequest.builder()
-                            .systemId("mdm-prusakova")
-                            .sender("prusakova")
+                            .systemId(mdmProperty.getSystemId())
+                            .sender(mdmProperty.getSender())
                             .build())
                     .body(request)
                     .build());

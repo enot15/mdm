@@ -33,6 +33,8 @@ spring:
             read-timeout: 5000
 
 mdm:
+  system-id: mdm-prusakova
+  sender: prusakova
   kafka:
     mdm-change-phone:
       enabled: true
@@ -41,3 +43,6 @@ mdm:
     change-phone:
       host-one: http://localhost:8082
       host-two: http://localhost:8082
+  retry:
+    max-attempts: 2
+    backoff: 1000

@@ -14,13 +14,7 @@ import ru.prusakova.mdm.dto.common.CommonResponse;
 @FeignClient(url = "${mdm.integration.change-phone.host-two}/user-data-service-two/user/update/phone", name = "mdm-client-two")
 public interface ChangePhoneTwoFeignClient {
 
-    @Value("${mdm.retry.max-attempts}")
-    int maxAttempts = 2;
-
-    @Value("${mdm.retry.backoff}")
-    int backoff = 1000;
-
     @PostMapping()
-    @Retryable(maxAttempts = maxAttempts, backoff = @Backoff(backoff))
+    @Retryable(maxAttemptsExpression  = "${mdm.retry.max-attempts}", backoff = @Backoff(delayExpression = "${mdm.retry.backoff}"))
     CommonResponse<MdmMessageResponse> postChangePhoneServiceTwo(MdmMessageServiceTwoPayload request);
 }

@@ -25,7 +25,7 @@ public class MdmChangePhoneConsumer {
         try {
             MdmChangePhoneEvent response = jsonUtil.fromJson(consumerRecord.value(), MdmChangePhoneEvent.class);
             validator.validate(response)
-                    .forEach(it -> log.warn(it.getMessage()));
+                    .forEach(it -> log.warn("{} в поле {}", it.getMessage(), it.getPropertyPath()));
         } catch (Exception e) {
             log.error("Ошибка преобразования JSON: {}", consumerRecord.value(), e);
         }

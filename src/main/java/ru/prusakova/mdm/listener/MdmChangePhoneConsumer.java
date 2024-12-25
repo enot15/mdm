@@ -1,5 +1,6 @@
 package ru.prusakova.mdm.listener;
 
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import ru.prusakova.mdm.dto.MdmChangePhoneEvent;
 import ru.prusakova.mdm.exception.MdmException;
 import ru.prusakova.mdm.util.JsonUtil;
+
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -25,9 +28,9 @@ public class MdmChangePhoneConsumer {
         log.info("Событие из кафки получен: {}", consumerRecord.toString());
         try {
             MdmChangePhoneEvent response = jsonUtil.fromJson(consumerRecord.value(), MdmChangePhoneEvent.class);;
-            if (!validator.validate(response).isEmpty()) {
-                validator.validate(response)
-                        .forEach(it -> log.warn("{} в поле {}", it.getMessage(), it.getPropertyPath()));
+            Set<ConstraintViolation<MdmChangePhoneEvent>> validate = validator.validate(response);
+            if (!validate.isEmpty()) {
+                validate.forEach(it -> log.warn("{} в поле {}", it.getMessage(), it.getPropertyPath()));
                 throw new MdmException("Сообщение не прошло валидацию");
             }
         } catch (MdmException e) {

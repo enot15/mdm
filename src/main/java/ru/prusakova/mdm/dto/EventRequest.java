@@ -1,19 +1,17 @@
 package ru.prusakova.mdm.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.UUID;
-
-@Setter
-@Getter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MdmMessagePayload {
+public class EventRequest {
 
-    private UUID id;
+    private String eventType;
     private String guid;
     private String phone;
 }

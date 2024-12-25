@@ -4,16 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
+import java.util.List;
 import java.util.UUID;
 
+@SuperBuilder
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MdmMessagePayload {
+public class MdmMessageServiceTwoPayload {
 
     private UUID id;
-    private String guid;
-    private String phone;
+    private String systemId;
+    private List<EventRequest> events;
 }

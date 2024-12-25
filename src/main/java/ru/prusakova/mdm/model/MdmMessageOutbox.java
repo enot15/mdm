@@ -5,8 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import ru.prusakova.mdm.dto.MdmMessageResponse;
-import ru.prusakova.mdm.dto.enums.DeliveryStatusEnum;
-import ru.prusakova.mdm.dto.enums.TargetEnum;
+import ru.prusakova.mdm.dto.enums.DeliveryStatus;
+import ru.prusakova.mdm.dto.enums.Target;
 
 import java.util.UUID;
 
@@ -25,10 +25,10 @@ public class MdmMessageOutbox extends AuditableEntity {
     private UUID mdmMessageId;
 
     @Enumerated(value = EnumType.STRING)
-    private DeliveryStatusEnum status;
+    private DeliveryStatus status;
 
     @Enumerated(value = EnumType.STRING)
-    private TargetEnum target;
+    private Target target;
 
     @JdbcTypeCode(SqlTypes.JSON)
     private MdmMessageResponse responseData;

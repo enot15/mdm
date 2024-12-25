@@ -1,6 +1,6 @@
 package ru.prusakova.mdm.dto.enums;
 
-public enum DeliveryStatusEnum {
+public enum DeliveryStatus {
     NEW,
     DELIVERED,
     ERROR,

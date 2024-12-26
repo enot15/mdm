@@ -44,8 +44,9 @@ mdm:
       topic-in: MDM.Change.Phone.IN.V1
   integration:
     change-phone:
-      host-one: http://localhost:8082
-      host-two: http://localhost:8082
+      host-one: http://195.93.252.91:8020
+      host-two: http://195.93.252.91:8020
   retry:
     max-attempts: 2
     backoff: 1000
+  retry-sending-cron: "0 0/5 * * * *"

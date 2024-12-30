@@ -1,6 +1,7 @@
 package ru.prusakova.mdm.repository;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import ru.prusakova.mdm.model.MdmMessageOutbox;
@@ -15,7 +16,8 @@ public interface MdmMessageOutboxRepository extends JpaRepository<MdmMessageOutb
         SELECT m FROM MdmMessageOutbox m
         WHERE m.lastUpdateTime > :ago15Minutes
         AND m.lastUpdateTime < :ago24Hours
-        AND m.status IN ('NEW', 'ERROR') ORDER BY m.lastUpdateTime
+        AND m.status IN ('NEW', 'ERROR')
+        ORDER BY m.lastUpdateTime
         """, nativeQuery = true)
-    List<MdmMessageOutbox> findByUpdateTimeAndStatus(LocalDateTime ago15Minutes, LocalDateTime ago24Hours, Pageable pageable);
+    Slice<MdmMessageOutbox> findByUpdateTimeAndStatus(LocalDateTime ago15Minutes, LocalDateTime ago24Hours, Pageable pageable);
 }

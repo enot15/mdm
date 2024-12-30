@@ -50,3 +50,5 @@ mdm:
     max-attempts: 2
     backoff: 1000
   retry-sending-cron: "0 0/5 * * * *"
+  page-number: 0
+  page-size: 100

@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import ru.prusakova.mdm.dto.MdmChangePhoneEvent;
-import ru.prusakova.mdm.service.MdmService;
+import ru.prusakova.mdm.service.MdmServiceGeneral;
 import ru.prusakova.mdm.exception.MdmException;
 import ru.prusakova.mdm.util.JsonUtil;
 
@@ -23,7 +23,7 @@ public class MdmChangePhoneConsumer {
 
     private final JsonUtil jsonUtil;
     private final Validator validator;
-    private final MdmService mdmService;
+    private final MdmServiceGeneral mdmService;
 
     @KafkaListener(topics = "${mdm.kafka.mdm-change-phone.topic-in}")
     public void consume(ConsumerRecord<String, String> consumerRecord) {

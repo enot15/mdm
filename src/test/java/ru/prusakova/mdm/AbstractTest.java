@@ -8,8 +8,8 @@ import org.springframework.test.context.ActiveProfiles;
 import ru.prusakova.mdm.client.ChangePhoneOneFeignClient;
 import ru.prusakova.mdm.client.ChangePhoneTwoFeignClient;
 import ru.prusakova.mdm.dto.EventRequest;
-import ru.prusakova.mdm.dto.MdmMessagePayload;
-import ru.prusakova.mdm.dto.MdmMessageServiceTwoPayload;
+import ru.prusakova.mdm.dto.MdmMessageServiceOneRequest;
+import ru.prusakova.mdm.dto.MdmMessageServiceTwoRequest;
 import ru.prusakova.mdm.service.ChangePhoneOneFeignClientService;
 import ru.prusakova.mdm.service.ChangePhoneTwoFeignClientService;
 
@@ -25,13 +25,13 @@ import java.util.UUID;
 @ActiveProfiles("test")
 public class AbstractTest {
 
-    protected static MdmMessagePayload MDM_MESSAGE_PAYLOAD = MdmMessagePayload.builder()
+    protected static MdmMessageServiceOneRequest MDM_MESSAGE_PAYLOAD = MdmMessageServiceOneRequest.builder()
             .id(UUID.randomUUID())
             .guid("12345678901234567890123456789012")
             .phone("+79268880011")
             .build();
 
-    protected static MdmMessageServiceTwoPayload MDM_MESSAGE_TWO_PAYLOAD = MdmMessageServiceTwoPayload.builder()
+    protected static MdmMessageServiceTwoRequest MDM_MESSAGE_TWO_PAYLOAD = MdmMessageServiceTwoRequest.builder()
             .id(UUID.randomUUID())
             .systemId("mdm-prusakova")
             .events(List.of(EventRequest.builder()

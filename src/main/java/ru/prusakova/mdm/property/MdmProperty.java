@@ -15,4 +15,6 @@ public class MdmProperty {
 
     private String systemId;
     private String sender;
+    private int pageNumber;
+    private int pageSize;
 }

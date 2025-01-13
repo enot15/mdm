@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.test.context.ActiveProfiles;
-import ru.prusakova.mdm.client.ChangePhoneOneFeignClient;
-import ru.prusakova.mdm.client.ChangePhoneTwoFeignClient;
+import ru.prusakova.mdm.client.ChangePhoneOneClient;
+import ru.prusakova.mdm.client.ChangePhoneTwoClient;
 import ru.prusakova.mdm.dto.EventRequest;
 import ru.prusakova.mdm.dto.MdmMessageServiceOneRequest;
 import ru.prusakova.mdm.dto.MdmMessageServiceTwoRequest;
-import ru.prusakova.mdm.service.ChangePhoneOneFeignClientService;
-import ru.prusakova.mdm.service.ChangePhoneTwoFeignClientService;
+import ru.prusakova.mdm.service.feign.ChangePhoneOneClientService;
+import ru.prusakova.mdm.service.feign.ChangePhoneTwoClientService;
 
 import java.util.List;
 import java.util.UUID;
@@ -45,14 +45,14 @@ public class AbstractTest {
     protected ObjectMapper objectMapper;
 
     @Autowired
-    protected ChangePhoneOneFeignClientService changePhoneOneFeignClientService;
+    protected ChangePhoneOneClientService changePhoneOneClientService;
 
     @Autowired
-    protected ChangePhoneTwoFeignClientService changePhoneTwoFeignClientService;
+    protected ChangePhoneTwoClientService changePhoneTwoClientService;
 
     @Autowired
-    protected ChangePhoneOneFeignClient changePhoneOneFeignClient;
+    protected ChangePhoneOneClient changePhoneOneClient;
 
     @Autowired
-    protected ChangePhoneTwoFeignClient changePhoneTwoFeignClient;
+    protected ChangePhoneTwoClient changePhoneTwoClient;
 }

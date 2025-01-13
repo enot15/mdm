@@ -22,7 +22,7 @@ public class MdmService {
     private final MdmOutboxService mdmOutboxService;
 
     @Transactional
-    public MdmMessageOutbox saveMessageInDb(MdmChangePhoneEvent event, Target target) {
+    public MdmMessageOutbox saveMessage(MdmChangePhoneEvent event, Target target) {
         MdmMessage mdmMessage = MdmMessage.builder()
                 .externalId(UUID.fromString(event.getId()))
                 .guid(event.getGuid())

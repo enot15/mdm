@@ -1,7 +1,6 @@
 package ru.prusakova.mdm.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,7 @@ public class MdmOutboxService {
 
     private final MdmMessageOutboxRepository mdmMessageOutboxRepository;
 
-    public void updateMessageOutboxInDb(MdmMessageOutbox mdmMessageOutbox, DeliveryStatus deliveryStatus, ResponseData<MdmMessageResponse> responseData) {
+    public void updateMessageOutbox(MdmMessageOutbox mdmMessageOutbox, DeliveryStatus deliveryStatus, ResponseData<MdmMessageResponse> responseData) {
         mdmMessageOutbox.setResponseData(responseData);
         mdmMessageOutbox.setStatus(deliveryStatus);
         mdmMessageOutboxRepository.save(mdmMessageOutbox);

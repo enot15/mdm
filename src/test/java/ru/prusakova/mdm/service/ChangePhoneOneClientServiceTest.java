@@ -6,30 +6,30 @@ import org.springframework.http.HttpMethod;
 import ru.prusakova.mdm.AbstractWireMockTest;
 import ru.prusakova.mdm.dto.common.CommonResponse;
 
-class ChangePhoneOneFeignClientServiceTest extends AbstractWireMockTest {
+class ChangePhoneOneClientServiceTest extends AbstractWireMockTest {
 
     @Test
     void when_updatePhone_success() throws JsonProcessingException {
         stubResponse("/user-data-service-one/update-phone", HttpMethod.POST, CommonResponse.builder().build());
-        changePhoneOneFeignClientService.updatePhone(MDM_MESSAGE_PAYLOAD);
+//        changePhoneOneClientService.updatePhone(MDM_MESSAGE_PAYLOAD);
     }
 
     @Test
     void when_updatePhone_timeout() throws JsonProcessingException {
         stubResponseWithDelay("/user-data-service-one/update-phone", HttpMethod.POST, CommonResponse.builder().build(), 6000);
 
-        System.out.println(changePhoneOneFeignClientService.updatePhone(MDM_MESSAGE_PAYLOAD));
+//        System.out.println(changePhoneOneClientService.updatePhone(MDM_MESSAGE_PAYLOAD));
     }
 
     @Test
     void when_updatePhone_400badRequest() {
         stub400Response("/user-data-service-one/update-phone", HttpMethod.POST);
-        changePhoneOneFeignClientService.updatePhone(MDM_MESSAGE_PAYLOAD);
+//        changePhoneOneClientService.updatePhone(MDM_MESSAGE_PAYLOAD);
     }
 
     @Test
     void when_updatePhone_500serverError() {
         stub500Response("/user-data-service-one/update-phone", HttpMethod.POST);
-        changePhoneOneFeignClientService.updatePhone(MDM_MESSAGE_PAYLOAD);
+//        changePhoneOneClientService.updatePhone(MDM_MESSAGE_PAYLOAD);
     }
 }

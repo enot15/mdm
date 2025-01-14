@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.test.context.ActiveProfiles;
-import ru.prusakova.mdm.client.ChangePhoneOneFeignClient;
-import ru.prusakova.mdm.client.ChangePhoneTwoFeignClient;
+import ru.prusakova.mdm.client.ChangePhoneOneClient;
+import ru.prusakova.mdm.client.ChangePhoneTwoClient;
 import ru.prusakova.mdm.dto.EventRequest;
-import ru.prusakova.mdm.dto.MdmMessagePayload;
-import ru.prusakova.mdm.dto.MdmMessageServiceTwoPayload;
-import ru.prusakova.mdm.service.ChangePhoneOneFeignClientService;
-import ru.prusakova.mdm.service.ChangePhoneTwoFeignClientService;
+import ru.prusakova.mdm.dto.MdmMessageServiceOneRequest;
+import ru.prusakova.mdm.dto.MdmMessageServiceTwoRequest;
+import ru.prusakova.mdm.service.feign.ChangePhoneOneClientService;
+import ru.prusakova.mdm.service.feign.ChangePhoneTwoClientService;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,13 +25,13 @@ import java.util.UUID;
 @ActiveProfiles("test")
 public class AbstractTest {
 
-    protected static MdmMessagePayload MDM_MESSAGE_PAYLOAD = MdmMessagePayload.builder()
+    protected static MdmMessageServiceOneRequest MDM_MESSAGE_PAYLOAD = MdmMessageServiceOneRequest.builder()
             .id(UUID.randomUUID())
             .guid("12345678901234567890123456789012")
             .phone("+79268880011")
             .build();
 
-    protected static MdmMessageServiceTwoPayload MDM_MESSAGE_TWO_PAYLOAD = MdmMessageServiceTwoPayload.builder()
+    protected static MdmMessageServiceTwoRequest MDM_MESSAGE_TWO_PAYLOAD = MdmMessageServiceTwoRequest.builder()
             .id(UUID.randomUUID())
             .systemId("mdm-prusakova")
             .events(List.of(EventRequest.builder()
@@ -45,14 +45,14 @@ public class AbstractTest {
     protected ObjectMapper objectMapper;
 
     @Autowired
-    protected ChangePhoneOneFeignClientService changePhoneOneFeignClientService;
+    protected ChangePhoneOneClientService changePhoneOneClientService;
 
     @Autowired
-    protected ChangePhoneTwoFeignClientService changePhoneTwoFeignClientService;
+    protected ChangePhoneTwoClientService changePhoneTwoClientService;
 
     @Autowired
-    protected ChangePhoneOneFeignClient changePhoneOneFeignClient;
+    protected ChangePhoneOneClient changePhoneOneClient;
 
     @Autowired
-    protected ChangePhoneTwoFeignClient changePhoneTwoFeignClient;
+    protected ChangePhoneTwoClient changePhoneTwoClient;
 }

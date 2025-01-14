@@ -14,7 +14,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MdmMessageServiceTwoPayload {
+public class MdmMessageServiceTwoRequest {
 
     private UUID id;
     private String systemId;

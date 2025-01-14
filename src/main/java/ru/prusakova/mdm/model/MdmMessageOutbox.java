@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import ru.prusakova.mdm.dto.MdmMessageResponse;
+import ru.prusakova.mdm.dto.ResponseData;
 import ru.prusakova.mdm.dto.enums.DeliveryStatus;
 import ru.prusakova.mdm.dto.enums.Target;
 
@@ -31,7 +32,7 @@ public class MdmMessageOutbox extends AuditableEntity {
     private Target target;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    private MdmMessageResponse responseData;
+    private ResponseData<MdmMessageResponse> responseData;
 
 
 }

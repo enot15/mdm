@@ -13,19 +13,18 @@ public class MdmServiceGeneral {
     private final MdmServiceRequestClientOne mdmServiceRequestClientOne;
     private final MdmServiceRequestClientTwo mdmServiceRequestClientTwo;
 
-    public void saveInDbAndRequestClients(MdmChangePhoneEvent event) {
+    public void saveAndRequestClients(MdmChangePhoneEvent event) {
 
         try {
             mdmServiceRequestClientOne.saveAndRequestServiceOne(event);
         } catch (Exception e) {
             log.error("Непредвиденная ошибка", e);
-        } finally {
-            try {
-                mdmServiceRequestClientTwo.saveAndRequestServiceTwo(event);
-            } catch (Exception e) {
-                log.error("Непредвиденная ошибка", e);
-            }
+        }
 
+        try {
+            mdmServiceRequestClientTwo.saveAndRequestServiceTwo(event);
+        } catch (Exception e) {
+            log.error("Непредвиденная ошибка", e);
         }
     }
 }

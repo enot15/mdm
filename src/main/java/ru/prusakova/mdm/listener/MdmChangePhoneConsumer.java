@@ -35,7 +35,7 @@ public class MdmChangePhoneConsumer {
                 validate.forEach(it -> log.warn("{} в поле {}", it.getMessage(), it.getPropertyPath()));
                 throw new MdmException("Сообщение не прошло валидацию");
             }
-            mdmService.saveInDbAndRequestClients(response);
+            mdmService.saveAndRequestClients(response);
 
         } catch (MdmException e) {
             log.error("Сообщение не прошло валидацию", e);

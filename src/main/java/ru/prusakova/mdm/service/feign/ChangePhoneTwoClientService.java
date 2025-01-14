@@ -36,11 +36,13 @@ public class ChangePhoneTwoClientService {
                 log.warn("Получено сообщение об ошибке от сервиса user-data-service-two при попытке обновить телефон: {}", responseEntity.getBody().getErrorMessage());
                 mdmOutboxService.updateMessageOutbox(mdmMessageOutbox, DeliveryStatus.ERROR,
                         ResponseData.<MdmMessageResponse>builder().response(responseEntity.getBody().getBody()).build());
+                return;
             }
 
             if (!responseEntity.getStatusCode().equals(HttpStatus.OK) || !IntegrationStatus.SUCCESS.equals(responseEntity.getBody().getBody().getStatus())) {
                 mdmOutboxService.updateMessageOutbox(mdmMessageOutbox, DeliveryStatus.ERROR,
                         ResponseData.<MdmMessageResponse>builder().response(responseEntity.getBody().getBody()).build());
+                return;
             }
 
             mdmOutboxService.updateMessageOutbox(mdmMessageOutbox, DeliveryStatus.DELIVERED,
